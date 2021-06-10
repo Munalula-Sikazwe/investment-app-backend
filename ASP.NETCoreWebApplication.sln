@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ASP.NETCoreWebApplication", "ASP.NETCoreWebApplication\ASP.NETCoreWebApplication.csproj", "{CC58AD36-D176-47FD-92A9-6647E3711FBA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CC58AD36-D176-47FD-92A9-6647E3711FBA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC58AD36-D176-47FD-92A9-6647E3711FBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC58AD36-D176-47FD-92A9-6647E3711FBA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC58AD36-D176-47FD-92A9-6647E3711FBA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
