@@ -16,7 +16,9 @@ namespace ASP.NETCoreWebApplication.Controllers
         [HttpPost()]
         public IActionResult PostInvestment( [FromBody]Investment investment)
         {
-            return Ok($"returning all investments from {investment.Username}");
+            double returns = investment.Amount * investment.Duration * 0.30;
+            return Ok($"The investment by {investment.Username} of {investment.Amount} will generate {returns} interest");
+            
         }
 
       
