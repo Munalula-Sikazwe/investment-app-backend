@@ -1,30 +1,25 @@
+using ASP.NETCoreWebApplication.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ASP.NETCoreWebApplication.Controllers
 {
     [ApiController]
+    [Route("api/[controller]")]
     public class InvestmentController : Controller
     {
         // GET
-        [HttpGet]
-        [Route("api/investment-returns")]
-        public IActionResult GetAll()
+        [HttpGet("{name}")]
+        public IActionResult GetInvestment( [FromRoute]Investment investment)
         {
-            return Ok("returning all investments");
+            return Ok($"returning all investments from {investment.Username}");
+        } 
+        [HttpPost()]
+        public IActionResult PostInvestment( [FromBody]Investment investment)
+        {
+            return Ok($"returning all investments from {investment.Username}");
         }
 
-        [HttpGet]
-        [Route("api/investment-returns/{id}")]
-        public IActionResult GetSingle(int id)
-        {
-            return Ok($"returning single investment #{id}.");
-        }
-
-        [HttpPost]
-        [Route("api/investment-returns/")]
-        public IActionResult PostSingle()
-        {
-            return Ok($"returning single investment .");
-        }
+      
+       
     }
 }
