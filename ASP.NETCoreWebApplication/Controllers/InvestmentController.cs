@@ -1,4 +1,5 @@
 using System.Linq;
+using System.Runtime.InteropServices.ComTypes;
 using ASP.NETCoreWebApplication.Contexts;
 using ASP.NETCoreWebApplication.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -25,7 +26,15 @@ namespace ASP.NETCoreWebApplication.Controllers
         [HttpGet("{id}")]
         public IActionResult GetInvestment(int id)
         {
-            return Ok(db.Investments.ToList());
+            var Investment = db.Investments.Find(id);
+            if (Investment == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                return Ok(Investment);
+            }
         } 
         [HttpPost()]
         public IActionResult PostInvestment( [FromBody]Investment investment)
