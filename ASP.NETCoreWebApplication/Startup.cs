@@ -13,6 +13,11 @@ namespace ASP.NETCoreWebApplication
 {
     public class Startup
     {
+        private readonly IWebHostEnvironment _env;
+        public Startup(IWebHostEnvironment env)
+        {
+            this._env = env;
+        }
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -23,21 +28,26 @@ namespace ASP.NETCoreWebApplication
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllersWithViews();
-            services.AddDbContext<InvestmentContext>(options
-                =>
+            if (_env.IsDevelopment())
             {
-                options.UseInMemoryDatabase("Investments");
-            });
+               
+                services.AddDbContext<InvestmentContext>(options
+                    =>
+                {
+                    options.UseInMemoryDatabase("Investments");
+                });
 
+                
+            }
+            services.AddControllersWithViews();
             // In production, the React files will be served from this directory
             services.AddSpaStaticFiles(configuration => { configuration.RootPath = "ClientApp/build"; });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app )
         {
-            if (env.IsDevelopment())
+            if (_env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
@@ -65,7 +75,7 @@ namespace ASP.NETCoreWebApplication
             {
                 spa.Options.SourcePath = "ClientApp";
 
-                if (env.IsDevelopment())
+                if (_env.IsDevelopment())
                 {
                     spa.UseReactDevelopmentServer(npmScript: "start");
                 }
