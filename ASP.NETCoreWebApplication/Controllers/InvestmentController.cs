@@ -1,3 +1,5 @@
+using System.Linq;
+using ASP.NETCoreWebApplication.Contexts;
 using ASP.NETCoreWebApplication.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -7,11 +9,23 @@ namespace ASP.NETCoreWebApplication.Controllers
     [Route("api/[controller]")]
     public class InvestmentController : Controller
     {
-        // GET
-        [HttpGet("{name}")]
-        public IActionResult GetInvestment( [FromRoute]Investment investment)
+        private readonly InvestmentContext db;
+
+        public InvestmentController(InvestmentContext db)
         {
-            return Ok($"returning all investments from {investment.Username}");
+            this.db = db;
+            
+        }
+        // GET
+        [HttpGet()]
+        public IActionResult GetInvestments()
+        {
+            return Ok(db.Investments.ToList());
+        } 
+        [HttpGet("{id}")]
+        public IActionResult GetInvestment(int id)
+        {
+            return Ok(db.Investments.ToList());
         } 
         [HttpPost()]
         public IActionResult PostInvestment( [FromBody]Investment investment)
