@@ -38,7 +38,7 @@ namespace ASP.NETCoreWebApplication.Contexts
                 },new Investment
                 {
                     InvestmentId = 5, Username = "Ron", 
-                    Amount = 1400, Duration = 7 
+                    Amount = 1400, Duration = 7 ,
                 }
             );
 

@@ -19,6 +19,12 @@ namespace ASP.NETCoreWebApplication.Controllers
         }
         // GET
         [HttpGet()]
+        [Route("/")]
+        public IActionResult GetHome()
+        {
+            return Ok("This is the investment api homepage please use the valid endpoints");
+        } 
+        [HttpGet()]
         public IActionResult GetInvestments()
         {
             return Ok(db.Investments.ToList());
