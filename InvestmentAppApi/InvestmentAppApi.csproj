@@ -5,6 +5,8 @@
        
         <IsPackable>false</IsPackable>
        
+        <RootNamespace>ASP.NETCoreWebApplication</RootNamespace>
+       
        
     </PropertyGroup>
 
