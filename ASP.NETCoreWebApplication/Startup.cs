@@ -45,11 +45,14 @@ namespace ASP.NETCoreWebApplication
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app,IWebHostEnvironment env )
+        public void Configure(IApplicationBuilder app,IWebHostEnvironment env,InvestmentContext context )
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                // Create in memory Database for Dev Environment.
+                context.Database.EnsureDeleted();
+                context.Database.EnsureCreated();
             }
             else
             {
