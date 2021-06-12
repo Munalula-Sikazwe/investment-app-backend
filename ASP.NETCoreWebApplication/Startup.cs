@@ -45,9 +45,9 @@ namespace ASP.NETCoreWebApplication
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app )
+        public void Configure(IApplicationBuilder app,IWebHostEnvironment env )
         {
-            if (_env.IsDevelopment())
+            if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
@@ -75,7 +75,7 @@ namespace ASP.NETCoreWebApplication
             {
                 spa.Options.SourcePath = "ClientApp";
 
-                if (_env.IsDevelopment())
+                if (env.IsDevelopment())
                 {
                     spa.UseReactDevelopmentServer(npmScript: "start");
                 }
