@@ -39,8 +39,10 @@ namespace ASP.NETCoreWebApplication.Controllers
         [HttpPost()]
         public IActionResult PostInvestment( [FromBody]Investment investment)
         {
-            double returns = investment.Amount * investment.Duration * 0.30;
-            return Ok(returns);
+            investment.InvestmentReturns = investment.Amount * investment.Duration * 0.30;
+            db.Investments.Add(investment);
+            db.SaveChanges();
+            return Ok(investment.InvestmentReturns);
             
         }
 
