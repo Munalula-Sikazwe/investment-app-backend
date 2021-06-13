@@ -51,6 +51,20 @@ namespace ASP.NETCoreWebApplication.Controllers
             return Ok(investment.InvestmentReturns);
             
         }
+        [HttpDelete("{id}")]
+        public IActionResult DeleteInvestment( int id)
+        {
+            var investment = db.Investments.Find(id);
+            if (investment == null) return NotFound();
+            else
+            {
+                db.Investments.Remove(investment);
+                db.SaveChanges();
+            }
+   
+            return Ok(db.Investments.ToList());
+            
+        }
 
       
        
