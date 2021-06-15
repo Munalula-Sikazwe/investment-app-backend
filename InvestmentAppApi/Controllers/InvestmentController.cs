@@ -30,7 +30,7 @@ namespace ASP.NETCoreWebApplication.Controllers
             return Ok(db.Investments.ToList());
         } 
         [HttpGet("{id}")]
-        public IActionResult GetInvestment(int id)
+        public IActionResult GetInvestment([FromRoute]int id)
         {
             var Investment = db.Investments.Find(id);
             if (Investment == null)
@@ -52,7 +52,7 @@ namespace ASP.NETCoreWebApplication.Controllers
             
         }
         [HttpDelete("{id}")]
-        public IActionResult DeleteInvestment( int id)
+        public IActionResult DeleteInvestment( [FromRoute]int id)
         {
             var investment = db.Investments.Find(id);
             if (investment == null) return NotFound();
